@@ -45,7 +45,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-home': {
         templateUrl: 'templates/tab-home.html',
-        controller: 'DashCtrl'
+        controller: 'homeCtrl'
       }
     }
   })
@@ -55,7 +55,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-playCode': {
           templateUrl: 'templates/tab-playCode.html',
-          controller: 'ChatsCtrl'
+          controller: 'playCodeCtrl',
+          params: {
+            'message': "",
+            'message2': "",
+          }
         }
       }
     })
@@ -74,7 +78,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-detect': {
         templateUrl: 'templates/tab-detect.html',
-        controller: 'AccountCtrl'
+        controller: 'detectCtrl'
       }
     }
   });
