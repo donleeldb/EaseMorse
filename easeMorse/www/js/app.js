@@ -40,12 +40,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // Each tab has its own nav history stack:
 
-  .state('tab.home', {
-    url: '/home',
+  .state('tab.encode', {
+    url: '/encode',
     views: {
-      'tab-home': {
-        templateUrl: 'templates/tab-home.html',
-        controller: 'homeCtrl'
+      'tab-encode': {
+        templateUrl: 'templates/tab-encode.html',
+        controller: 'encodeCtrl'
       }
     }
   })
@@ -57,8 +57,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
           templateUrl: 'templates/tab-playCode.html',
           controller: 'playCodeCtrl',
           params: {
-            'message': "",
-            'message2': "",
+            'message': null
           }
         }
       }
@@ -73,17 +72,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
-  .state('tab.detect', {
-    url: '/detect',
+  .state('tab.decode', {
+    url: '/decode',
     views: {
-      'tab-detect': {
-        templateUrl: 'templates/tab-detect.html',
-        controller: 'detectCtrl'
+      'tab-decode': {
+        templateUrl: 'templates/tab-decode.html',
+        controller: 'decodeCtrl'
       }
     }
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/home');
+  $urlRouterProvider.otherwise('/tab/encode');
 
 });

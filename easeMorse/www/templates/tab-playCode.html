@@ -2,8 +2,10 @@
   <ion-content>
     <div ng-controller="playCodeCtrl">
 
-    <button class="button button-half" ng-click="onEncode()">Flash Light</button>
-    <button class="button button-half" ng-click="onEncode()">Sound Beep</button>
+      <p> The message to be encoded is <strong> {{$parent.message}}  </strong> </p>
+
+      <button class="button button-half" ng-click="onFlashLight()">Flash Light</button>
+      <button class="button button-half" ng-click="onSoundBeep()">Sound Beep</button>
 
     </div>
   </ion-content>

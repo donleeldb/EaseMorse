@@ -1,0 +1,15 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+
+    <div ng-controller="encodeCtrl">
+      <label class="item item-input">
+
+        <input type="text" name="message" id="message-textarea"
+             ng-model="message" placeholder="Type in the message that you want to encode here. ">
+      </label>
+      <br>
+      <button class="button button-full" ng-click="onEncode()">Encode</button>
+    </div>
+
+  </ion-content>
+</ion-view>
