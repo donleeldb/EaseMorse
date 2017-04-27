@@ -1,12 +1,20 @@
 <ion-view view-title="Play Code" >
-  <ion-content>
+  <ion-content class="padding">
+
     <div ng-controller="playCodeCtrl">
+      <br>
+      <br>
+      <br>
+      <br>
+      <label>
 
       <p> The message to be encoded is <strong> {{$parent.message}}  </strong> </p>
-
+      </label>
+      <br>
       <button class="button button-half" ng-click="onFlashLight()">Flash Light</button>
       <button class="button button-half" ng-click="onSoundBeep()">Sound Beep</button>
-
+      <button class="button button-half" ng-click="turnOn()">Light On</button>
+      <button class="button button-half" ng-click="turnOff()">Light Off</button>
     </div>
   </ion-content>
 </ion-view>

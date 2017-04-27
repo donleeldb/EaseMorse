@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['ngCordova'])
 
 .controller('encodeCtrl', function($scope, $state, $ionicViewSwitcher,$ionicLoading) {
   $scope.message = "";
@@ -14,7 +14,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading) {
+.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $timeout) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -43,9 +43,9 @@ angular.module('starter.controllers', [])
     "11113","11111","31111","33111","33311",
     "33331", "0"];
 
-  $scope.message = $stateParams.message;
+  //$scope.message = $stateParams.message;
   /*-- Sample message to be removed after parameters issue --*/
-  $scope.message = "sample input message";
+  $scope.message = "321"; //sample message\
 
   // Take a character, returns its morse code in strings of 1s and 3s
   $scope.charToMorse= function(a) {
@@ -53,35 +53,62 @@ angular.module('starter.controllers', [])
     return $scope.morseDict[index];
   };
 
+  // Wait x milliseconds
+  function wait(ms){
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > ms){
+        break;
+      }
+    }
+  }
+
   // Take a morse code in form of a 1s 3s string, utilize the flash light to play it
-  $scope.playMorseFL= function(a){
+  $scope.playMorseFL= function(morse){
+    for (var i = 0; i<morse.length; i++){
+      if (morse[i] == "1"){
+        $cordovaFlashlight.switchOn();
+        wait(500);
+        $cordovaFlashlight.switchOff();
+      }else if (morse[i] == "3"){
+        $cordovaFlashlight.switchOn();
+        wait(1500);
+        $cordovaFlashlight.switchOff();
+      }else {
+        wait(500);
+      }
+    }
   };
 
   // Take a morse code in form of a 1s 3s string, utilize the speaker to play it
+  $scope.playMorseSB= function(morse){
+
+  };
 
   $scope.onFlashLight = function(){
-
-    $ionicLoading.show({ template: "Implementing Flashlight", noBackdrop: true, duration: 1000 });
-
     for (var i = 0; i < $scope.message.length; i++){
-
-      console.log($scope.charToMorse($scope.message[i]));
-
+      console.log($scope.message[i]);
       var morse = $scope.charToMorse($scope.message[i]);
-      $scope.playMorseFL(morse);
+      console.log(morse);
+      //$scope.playMorseFL(morse);
+      wait(1500);
     }
+    $ionicLoading.show({ template: "flash done", noBackdrop: true, duration: 1000 });
   };
 
   $scope.onSoundBeep = function(){
-    $ionicLoading.show({ template: "Implementing Soundbeep", noBackdrop: true, duration: 1000 });
 
-    for (var i = 0; i<$scope.message; i++){
-
-    }
   };
 
+  $scope.turnOn = function () {
+    $cordovaFlashlight.switchOn();
+    $ionicLoading.show({ template: 'On!', noBackdrop: true, duration: 1000 });
+  };
 
-
+  $scope.turnOff = function() {
+    $cordovaFlashlight.switchOff();
+    $ionicLoading.show({ template: 'Off!', noBackdrop: true, duration: 1000 });
+  };
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
