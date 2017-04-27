@@ -1,4 +1,10 @@
 angular.module('starter.controllers', ['ngCordova'])
+  //controller for welcome page
+  .controller('WelcomeCtrl', function($scope, $state) {
+    $scope.onEnter = function(){
+      $state.go('tab.encode',{});
+    }
+  })
 
 .controller('encodeCtrl', function($scope, $state, $ionicViewSwitcher,$ionicLoading) {
   $scope.message = "";
@@ -7,7 +13,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
     $ionicLoading.show({ template: $scope.message, noBackdrop: true, duration: 1000 });
 
-    $ionicViewSwitcher.nextDirection('forward')
+    $ionicViewSwitcher.nextDirection('forward');
     $state.go("tab.playCode", {
       'message': $scope.message
     })
@@ -111,9 +117,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+
 
 .controller('decodeCtrl', function($scope) {
   $scope.settings = {
