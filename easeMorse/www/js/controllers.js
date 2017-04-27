@@ -1,6 +1,14 @@
 angular.module('starter.controllers', ['ngCordova'])
   //controller for welcome page
-  .controller('WelcomeCtrl', function($scope, $state) {
+  .controller('WelcomeCtrl', function($scope, $state, $ionicPopup) {
+    //Show a brief introduction of our app
+    $scope.intro = function(){
+      $ionicPopup.alert({
+        title: 'Introduction',
+        template: 'Hello! Our EaseMorse app offers a simple way to convert text into morse code, flashlight and beeps. Thanks for using!',
+        cssClass: 'animated bounceInDown'
+      });
+    };
     $scope.onEnter = function(){
       $state.go('tab.encode',{});
     }
