@@ -1,1 +1,51 @@
-/* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: 'Jura';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/jura/jura-v7-latin-regular.eot");
+    /* IE9 Compat Modes */
+    src: local("Jura Regular"), local("Jura-Regular"), url("../fonts/jura/jura-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/jura/jura-v7-latin-regular.woff2") format("woff2"), url("../fonts/jura/jura-v7-latin-regular.woff") format("woff"), url("../fonts/jura/jura-v7-latin-regular.ttf") format("truetype"), url("../fonts/jura/jura-v7-latin-regular.svg#Jura") format("svg");
+    /* Legacy iOS */ }
+
+.welcomeView h1, .welcomeView button {
+    font-family: 'Jura'; }
+
+.welcomeView h1 {
+    font-size: 5em;
+    color: white; }
+
+.welcomeView button {
+    font-size: 26px; }
+
+.welcomeView .scroll-content {
+    background: linear-gradient(145deg, #6C6C6C, #95A2AB, #97A2B7, #d3c69f, #002F57, #000000);
+    background-size: 800% 800%;
+    -webkit-animation: background 26s ease infinite;
+    animation: background 26s ease infinite; }
+.welcomeView .scroll-content .scroll {
+    height: 100%; }
+.welcomeView .scroll-content .scroll .row-center {
+    height: 100%; }
+
+@-webkit-keyframes background {
+    0% {
+        background-position: 1% 0%; }
+    50% {
+        background-position: 99% 100%; }
+    100% {
+        background-position: 1% 0%; } }
+
+@keyframes background {
+    0% {
+        background-position: 1% 0%; }
+    50% {
+        background-position: 99% 100%; }
+    100% {
+        background-position: 1% 0%; } }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+    display: none !important; }
+
+.itemView .animated {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
