@@ -90,7 +90,7 @@ angular.module('starter.controllers', ['ngCordova'])
       console.log($scope.message[i]);
       var morse = $scope.charToMorse($scope.message[i]);
       console.log(morse);
-      //$scope.playMorseFL(morse);
+      $scope.playMorseFL(morse);
       wait(1500);
     }
     $ionicLoading.show({ template: "flash done", noBackdrop: true, duration: 1000 });
