@@ -30,6 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+  /*
   // once opened, display a welcome page first
     .state('welcome', {
       url: "/welcome",
@@ -42,6 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       templateUrl: "templates/introduction.html",
       controller: 'introCtrl'
     })
+      */
   // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
@@ -85,5 +87,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/welcome');
+  $urlRouterProvider.otherwise('tab/encode');
 });
