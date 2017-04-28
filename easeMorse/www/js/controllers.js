@@ -1,17 +1,35 @@
 angular.module('starter.controllers', ['ngCordova'])
   //controller for welcome page
-  .controller('WelcomeCtrl', function($scope, $state, $ionicPopup) {
+  .controller('welcomeCtrl', function($scope, $state, $ionicPopup, $cordovaMedia) {
     //Show a brief introduction of our app
     $scope.intro = function(){
       $ionicPopup.alert({
         title: 'Introduction',
-        template: 'Hello! Our EaseMorse app offers a simple way to convert text into morse code, flashlight and beeps. Thanks for using!',
-        cssClass: 'animated bounceInDown'
+        template: 'Hello! Our EaseMorse app offers a simple way to convert text into morse code, flashlights and beeps. Thanks for using!',
+        cssClass: 'animated shake'
       });
     };
     $scope.onEnter = function(){
-      $state.go('tab.encode',{});
+      $state.go('introduction',{});
     }
+  })
+  .controller('introCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+
+    // Called to navigate to the main app
+    $scope.startApp = function() {
+      $state.go('tab.encode',{});
+    };
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
+    };
   })
 
 .controller('encodeCtrl', function($scope, $state, $ionicViewSwitcher,$ionicLoading) {

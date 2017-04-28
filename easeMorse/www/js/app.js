@@ -34,7 +34,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     .state('welcome', {
       url: "/welcome",
       templateUrl: "templates/welcome.html",
-      controller: 'WelcomeCtrl'
+      controller: 'welcomeCtrl'
+    })
+    // State for slides
+    .state('introduction', {
+      url: "/introduction",
+      templateUrl: "templates/introduction.html",
+      controller: 'introCtrl'
     })
   // setup an abstract state for the tabs directive
     .state('tab', {
