@@ -1,45 +1,37 @@
 <ion-view view-title="Intro" hide-nav-bar="true">
   <ion-slide-box on-slide-changed="slideChanged(index)">
-    <ion-slide>
-          <button class="button button-positive button-clear no-animation"
-                  ng-click="startApp()">
-            Skip Intro
-          </button>
-      <h3>lalalalala!</h3>
-      <div id="logo">
-        <img src="http://code.ionicframework.com/assets/img/app_icon.png">
-      </div>
-      <p>
-        lalallaa.
+    <ion-slide class="background-intro1">
+      <h3 style="margin-top:150px" class="yellow">ENCRYPT YOUR MESSAGE</h3>
+      <p style="margin-top:30px" class="yellow">
+        TYPE IN.
       </p>
-      <p>
-        lalalallalalalal.
+      <p class="yellow">
+        HIT SUBMIT.
+      </p>
+      <p class="yellow">
+        DONE.
+      </p>
+      <p class="skip" style="margin-top:200px" ng-click="startApp()">
+      Skip this introduction
       </p>
     </ion-slide>
-    <ion-slide>
-      <ion-toolbar>
-        <button class="button button-positive button-clear no-animation"
-                ng-click="startApp()">
-          Skip
-        </button>
-      </ion-toolbar>
-      <h3>lalalala</h3>
+    <ion-slide class="background-intro2">
+      <h3 style="margin-top:150px" class="yellow">INTERESTING FEATURES:</h3>
+          <P style="margin-top: 30px" class="yellow">BEEPS</P>
+          <P class="yellow">FLASHLIGHTS</P>
+      <P class="yellow">PRE-DEFINED MESSAGES</P>
+      <p class="skip" style="margin-top: 200px" ng-click="startApp()">
+        Skip this introduction
+      </p>
+    </ion-slide>
+    <ion-slide class="background-intro3">
+      <h3 style="margin-top:150px" class="yellow">TRY PLAYING OUR</h3>
+      <h3 class="yellow">MORSE MACHINE SIMULATOR</h3>
 
-      <div id="list">
-        <h5>Simple steps:</h5>
-        <ol>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ol>
-      </div>
-    </ion-slide>
-    <ion-slide>
-      <h3>Ready?</h3>
-      <p>
-        lalalal
+      <p style="margin-top:30px" class="yellow">
+        DECRYPT YOUR MORSE CODE!
       </p>
-      <button class="button icon-right ion-chevron-right button-clear button-positive" ng-click="startApp()">
+      <button style="margin-top:100px"class="button button-full button-positive" ng-click="startApp()">
         Continue
       </button>
     </ion-slide>
