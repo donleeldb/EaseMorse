@@ -7,85 +7,83 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
 
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+  .run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+        cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+        cordova.plugins.Keyboard.disableScroll(true);
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
-})
-
-.config(function($stateProvider, $urlRouterProvider) {
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
-  /*
-  // once opened, display a welcome page first
-    .state('welcome', {
-      url: "/welcome",
-      templateUrl: "templates/welcome.html",
-      controller: 'welcomeCtrl'
-    })
-    // State for slides
-    .state('introduction', {
-      url: "/introduction",
-      templateUrl: "templates/introduction.html",
-      controller: 'introCtrl'
-    })
-      */
-  // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
-
-  // Each tab has its own nav history stack:
-
-  .state('tab.encode', {
-    url: '/encode',
-    views: {
-      'tab-encode': {
-        templateUrl: 'templates/tab-encode.html',
-        controller: 'encodeCtrl'
       }
-    }
+      if (window.StatusBar) {
+        // org.apache.cordova.statusbar required
+        StatusBar.styleDefault();
+      }
+    });
   })
 
-  .state('tab.playCode', {
-      url: '/playCode',
-      views: {
-        'tab-playCode': {
-          templateUrl: 'templates/tab-playCode.html',
-          controller: 'playCodeCtrl',
-          params: {
-            'message': null
+  .config(function($stateProvider, $urlRouterProvider) {
+
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
+    // Each state's controller can be found in controllers.js
+    $stateProvider
+    // once opened, display a welcome page first
+      .state('welcome', {
+        url: "/welcome",
+        templateUrl: "templates/welcome.html",
+        controller: 'welcomeCtrl'
+      })
+      // State for slides
+      .state('introduction', {
+        url: "/introduction",
+        templateUrl: "templates/introduction.html",
+        controller: 'introCtrl'
+      })
+      // setup an abstract state for the tabs directive
+      .state('tab', {
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
+      })
+
+      // Each tab has its own nav history stack:
+
+      .state('tab.encode', {
+        url: '/encode',
+        views: {
+          'tab-encode': {
+            templateUrl: 'templates/tab-encode.html',
+            controller: 'encodeCtrl'
           }
         }
-      }
-    })
+      })
 
-  .state('tab.decode', {
-    url: '/decode',
-    views: {
-      'tab-decode': {
-        templateUrl: 'templates/tab-decode.html',
-        controller: 'decodeCtrl'
-      }
-    }
+      .state('tab.playCode', {
+        url: '/playCode',
+        views: {
+          'tab-playCode': {
+            templateUrl: 'templates/tab-playCode.html',
+            controller: 'playCodeCtrl',
+            params: {
+              'message': null
+            }
+          }
+        }
+      })
+
+      .state('tab.decode', {
+        url: '/decode',
+        views: {
+          'tab-decode': {
+            templateUrl: 'templates/tab-decode.html',
+            controller: 'decodeCtrl'
+          }
+        }
+      });
+
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/welcome');
   });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('tab/encode');
-});
