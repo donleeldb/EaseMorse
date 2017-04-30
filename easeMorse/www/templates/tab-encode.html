@@ -1,15 +1,14 @@
 <ion-view view-title="Encode">
-  <ion-content class="padding">
+  <ion-content class="background-all" ng-controller="encodeCtrl">
 
-    <div ng-controller="encodeCtrl">
+    <div class="padding animated bounceInLeft">
       <label class="item item-input">
 
         <input type="text" name="message" id="message-textarea"
-             ng-model="message" placeholder="Type in the message that you want to encode here. ">
+             ng-model="message" placeholder="Type in the message that you want to encode.">
       </label>
       <br>
-      <button class="button button-full" ng-click="onEncode()">Encode</button>
     </div>
-
+    <button class="button button-full button-positive animated bounceInUp" ng-click="onEncode()">Submit</button>
   </ion-content>
 </ion-view>

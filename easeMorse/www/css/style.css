@@ -6,6 +6,36 @@
     /* IE9 Compat Modes */
     src: local("Jura Regular"), local("Jura-Regular"), url("../fonts/jura/jura-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/jura/jura-v7-latin-regular.woff2") format("woff2"), url("../fonts/jura/jura-v7-latin-regular.woff") format("woff"), url("../fonts/jura/jura-v7-latin-regular.ttf") format("truetype"), url("../fonts/jura/jura-v7-latin-regular.svg#Jura") format("svg");
     /* Legacy iOS */ }
+.grey{
+  color: #424242;
+}
+.putmiddle{
+  padding-top: 80px;
+}
+.background-div{
+  text-align: center;
+  line-height: 200px;
+  height: 200px;
+  background: url('../img/background.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.white{
+  color: #ffffff;
+}
+.background-grey{
+  background-color: #424242;
+}
+.background-alternative{
+  background-color: #202020;
+}
+.background-all{
+  background: url('../img/background.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
 .background-intro1{
   background: url('../img/intro1.jpg') no-repeat fixed center;
   background-size: contain;
@@ -31,8 +61,8 @@
   color: #ffffff;
   text-decoration: underline;
 }
-.popup-buttons .button {
-  background-color: #383428;
+.popup-buttons.button {
+  background-color: #fcd736;
 }
 
 .welcomeView h1, .welcomeView button {
