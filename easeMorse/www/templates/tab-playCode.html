@@ -1,16 +1,10 @@
 <ion-view view-title="Play Code" >
-  <ion-content class="padding">
+  <ion-content class="padding background-alternative" ng-controller="playCodeCtrl">
 
-    <div ng-controller="playCodeCtrl">
-      <br>
-      <br>
-      <br>
-      <br>
-      <label>
-
-      <p> The message to be encoded is <strong> {{$parent.message}}  </strong> </p>
-      </label>
-      <br>
+    <div class="background-div animated bounceInDown">
+      <h2 class="positive putmiddle"> <strong> {{$parent.message}}</strong> </h2>
+      <h4 class="white"> to be encrypted</h4>
+      <!--
       <button class="button button-half" ng-click="onFlashLight()">Flash Light</button>
       <button class="button button-half" ng-click="onSoundBeep()">Sound Beep</button>
       <button class="button button-half" ng-click="onVibrate()">Vibration</button>
@@ -21,6 +15,85 @@
       <button class="button button-half" ng-click="turnOn()">Light On</button>
       <button class="button button-half" ng-click="turnOff()">Light Off</button>
       -->
+<<<<<<< HEAD
+=======
     </div>
+    <div class="list card animated bounceInLeft">
+      <div class="item item-avatar background-grey">
+        <img src="img/face1.jpg">
+        <h2 class="positive">Flashlight</h2>
+        <h3 class="white">Translate into flashlights</h3>
+      </div>
+
+      <a class="item item-icon-left positive background-grey" ng-click="onFlashLight()">
+        <i class="icon ion-flash"></i>
+        Start flashing
+      </a>
+
+
+
+    </div>
+    <div class="list card animated bounceInRight">
+      <div class="item item-avatar background-grey">
+        <img src="img/face2.jpg">
+        <h2 class="positive">Vibration</h2>
+        <h3 class="white">Translate into vibration</h3>
+      </div>
+
+      <a class="item item-icon-left positive background-grey">
+        <i class="icon ion-radio-waves"></i>
+        Start vibrating
+      </a>
+>>>>>>> 5cd3d4a3f8da9273f08cc8f05e1637891decc9dd
+    </div>
+
+
+    <div class="list card animated bounceInLeft">
+      <div class="item item-avatar background-grey">
+        <img src="img/face3.jpg">
+        <h2 class="positive">Beep</h2>
+        <h3 class="white">Translate into beeps</h3>
+      </div>
+
+      <a class="item item-icon-left positive background-grey" ng-click="onSoundBeep()">
+        <i class="icon ion-music-note"></i>
+        Start listening the beeps
+      </a>
+
+    </div>
+
+
+    <div class="list card animated bounceInRight">
+
+      <div class="item item-avatar background-grey">
+        <img src="img/face4.jpg">
+        <h2 class="positive">Light On</h2>
+        <h3 class="white">Used for testing</h3>
+      </div>
+
+      <a class="item item-icon-left positive background-grey" ng-click="turnOn()">
+        <i class="icon ion-ios-lightbulb"></i>
+        Turn the light on
+      </a>
+
+    </div>
+
+
+    <div class="list card animated bounceInLeft">
+
+      <div class="item item-avatar background-grey">
+        <img src="img/face5.jpg">
+        <h2 class="positive">Light Off</h2>
+        <h3 class="white">Used for testing</h3>
+      </div>
+
+      <a class="item item-icon-left positive background-grey" ng-click="turnOff()">
+        <i class="icon ion-ios-lightbulb-outline"></i>
+        Turn the light off
+      </a>
+
+    </div>
+
+
   </ion-content>
 </ion-view>

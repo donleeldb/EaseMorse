@@ -1,4 +1,36 @@
 angular.module('starter.controllers', ['ngCordova'])
+  //controller for welcome page
+  .controller('welcomeCtrl', function($scope, $state, $ionicPopup, $cordovaMedia) {
+    //Show a brief introduction of our app
+    $scope.intro = function(){
+      $ionicPopup.alert({
+        title: 'Introduction',
+        template: 'Hello! Our EaseMorse app offers a simple way to convert text into morse code, flashlights and beeps. Thanks for using!',
+        cssClass: 'animated shake'
+      });
+    };
+    $scope.onEnter = function(){
+      $state.go('introduction',{});
+    }
+  })
+  .controller('introCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
+
+    // Called to navigate to the main app
+    $scope.startApp = function() {
+      $state.go('tab.encode',{});
+    };
+    $scope.next = function() {
+      $ionicSlideBoxDelegate.next();
+    };
+    $scope.previous = function() {
+      $ionicSlideBoxDelegate.previous();
+    };
+
+    // Called each time the slide changes
+    $scope.slideChanged = function(index) {
+      $scope.slideIndex = index;
+    };
+  })
 
 .controller('encodeCtrl', function($scope, $state, $ionicViewSwitcher,$ionicLoading) {
   $scope.message = "";
@@ -7,7 +39,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
     $ionicLoading.show({ template: $scope.message, noBackdrop: true, duration: 1000 });
 
-    $ionicViewSwitcher.nextDirection('forward')
+    $ionicViewSwitcher.nextDirection('forward');
     $state.go("tab.playCode", {
       'message': $scope.message
     })
@@ -188,9 +220,7 @@ angular.module('starter.controllers', ['ngCordova'])
   */
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
-})
+
 
 .controller('decodeCtrl', function($scope) {
   $scope.settings = {
