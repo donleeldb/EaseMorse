@@ -146,6 +146,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
   // Take a morse code in form of a 1s 3s string, utilize cordova vibrate to play it
   $scope.playMorseV = function(morse){
+    /*
     var p = $cordovaFlashlight.available();
     for (var i = 0; i<morse.length; i++){
       if (morse[i] == "1"){
@@ -174,6 +175,28 @@ angular.module('starter.controllers', ['ngCordova'])
         }
       }
       return p;
+     */
+    var time = [];
+    var count = 0;
+    for (var i = 0; i<morse.length; i++){
+      if (morse[i] == "1"){
+        time[count] = 500;
+        count++;
+        time[count] = 500;
+        count++;
+      }else if (morse[i] == "3"){
+        time[count] = 500;
+        count++;
+        time[count] = 500;
+        count++;
+      }else {
+        time[count] = 0;
+        count++;
+        time[count] = 1000;
+        count++;
+      }
+    }
+    $cordovaVibration.vibrate(time);
   };
 
   // Button function to play morse code with flashlight
@@ -221,6 +244,7 @@ angular.module('starter.controllers', ['ngCordova'])
     $ionicLoading.show({ template: 'Off!', noBackdrop: true, duration: 1000 });
   };
   */
+
 })
 
 
