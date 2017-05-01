@@ -200,10 +200,10 @@ angular.module('starter.controllers', ['ngCordova'])
 
   // Test button function to turn on vibrate
   $scope.vibrate1 = function(){
-    $cordovaVibration.navigator.vibrate(500);
+    $cordovaVibration.vibrate(500);
   }
   $scope.vibrate2 = function(){
-    $cordovaVibration.navigator.vibrate(1500);
+    $cordovaVibration.vibrate(1500);
   }
 
   /*
