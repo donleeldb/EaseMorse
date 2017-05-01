@@ -252,6 +252,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.message = "";
   $scope.currMorse = "";
+  $scope.currMorseDashDot = "";
 
   $scope.morseToChar = function(morse) {
     var index = $scope.morseDict.indexOf(morse);
@@ -262,11 +263,13 @@ angular.module('starter.controllers', ['ngCordova'])
   // Button dot
   $scope.onDot = function(){
     $scope.currMorse += "1";
+    $scope.currMorseDashDot += ".";
   }
 
   // Button dash
   $scope.onDash = function(){
-    $scope.currMorse += "3"
+    $scope.currMorse += "3";
+    $scope.currMorseDashDot += "-";
   }
 
   $scope.onSpace = function(){
@@ -278,9 +281,11 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.onAdd = function(){
     $scope.currMorse += "0";
-    var char = morseToChar($scope.currMorse);
+    var char = $scope.morseToChar($scope.currMorse);
+    console.log(char);
     $scope.message += char;
     $scope.currMorse="";
+    $scope.currMorseDashDot="";
   }
 
 

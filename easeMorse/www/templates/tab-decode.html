@@ -1,9 +1,55 @@
 <ion-view view-title="Decode">
   <ion-content class="padding background-alternative">
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+    <div class="background-div animated bounceInDown">
+      <h2 class="positive putmiddle"> <strong> {{message}}</strong> </h2>
+      <h4 class="white"> is the current message</h4>
+    </div>
+
+
+    <div class="background-div animated bounceInDown">
+      <h2 class="positive putmiddle"> <strong> {{currMorseDashDot}}</strong> </h2>
+      <h4 class="white"> is the current morse</h4>
+    </div>
+
+
+    <div class="list card animated bounceInRight">
+      <div class="item item-avatar background-grey">
+        <img src="img/face4.jpg">
+        <h2 class="positive">Dot</h2>
+        <h3 class="white">Add a dot</h3>
+      </div>
+      <a class="item item-icon-left positive background-grey" ng-click="onDot()">
+        <i class="icon ion-ios-lightbulb"></i>
+        Add a dot
+      </a>
+    </div>
+
+
+    <div class="list card animated bounceInLeft">
+      <div class="item item-avatar background-grey">
+        <img src="img/face5.jpg">
+        <h2 class="positive">Dash</h2>
+        <h3 class="white">Add a dash</h3>
+      </div>
+      <a class="item item-icon-left positive background-grey" ng-click="onDash()">
+        <i class="icon ion-ios-lightbulb-outline"></i>
+        Add a dash
+      </a>
+    </div>
+
+    <div class="list card animated bounceInLeft">
+      <div class="item item-avatar background-grey">
+        <img src="img/face3.jpg">
+        <h2 class="positive">Add</h2>
+        <h3 class="white">Add the letter</h3>
+      </div>
+      <a class="item item-icon-left positive background-grey" ng-click="onAdd()">
+        <i class="icon ion-music-note"></i>
+        Add the letter to message
+      </a>
+    </div>
+
+
+
   </ion-content>
 </ion-view>
