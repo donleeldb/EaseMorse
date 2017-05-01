@@ -6,6 +6,21 @@
     /* IE9 Compat Modes */
     src: local("Jura Regular"), local("Jura-Regular"), url("../fonts/jura/jura-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/jura/jura-v7-latin-regular.woff2") format("woff2"), url("../fonts/jura/jura-v7-latin-regular.woff") format("woff"), url("../fonts/jura/jura-v7-latin-regular.ttf") format("truetype"), url("../fonts/jura/jura-v7-latin-regular.svg#Jura") format("svg");
     /* Legacy iOS */ }
+.popoverView {
+  background-color: #4E5E6E !important; }
+.popoverView .scroll {
+  height: 100%; }
+.popoverView .scroll .slider {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  text-align: center; }
+.popoverView .scroll .slider .slider-slide img {
+  max-height: 100%;
+  max-width: 100%; }
+
 .grey{
   color: #424242;
 }
