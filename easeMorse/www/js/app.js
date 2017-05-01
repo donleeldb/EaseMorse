@@ -63,13 +63,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
 
       .state('tab.playCode', {
         url: '/playCode',
+        params: {
+          'message': null
+        },
         views: {
           'tab-playCode': {
             templateUrl: 'templates/tab-playCode.html',
             controller: 'playCodeCtrl',
-            params: {
-              'message': null
-            }
+
           }
         }
       })

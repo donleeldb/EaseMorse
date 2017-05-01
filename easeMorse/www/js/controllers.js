@@ -75,9 +75,12 @@ angular.module('starter.controllers', ['ngCordova'])
     "111130","111110","311110","331110","333110",
     "333310", "000"];
 
-  //$scope.message = $stateParams.message;
+  $scope.message = "";
+  $scope.message = $stateParams.message;
+  console.log($stateParams);
+
   /*-- Sample message to be removed after parameters issue --*/
-  $scope.message = "21"; //sample message\
+  //$scope.message = "21"; //sample message\
 
   // Take a character, returns its morse code in strings of 1s and 3s
   $scope.stringToMorse= function(message) {
@@ -226,4 +229,59 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.settings = {
     enableFriends: true
   };
+
+  // All allowed characters placed in a dictionary
+  $scope.charDict = ["a","b","c","d","e",
+    "f","g","h","i","j",
+    "k","l","m","n","o",
+    "p","q","r","s","t",
+    "u","v","w","x","y",
+    "z","0","1","2","3",
+    "4","5","6","7","8",
+    "9"," "];
+
+  // Morse code for each character in charDict in order
+  $scope.morseDict = ["130","3110","31310","3110","10",
+    "11310","3310","11110","110","13330",
+    "3130","13110","330","310","3330",
+    "13310","33130","1310","1110","30",
+    "1130","11130","1330","31130","31330",
+    "33110","333330","133330","113330","111330",
+    "111130","111110","311110","331110","333110",
+    "333310", "000"];
+
+  $scope.message = "";
+  $scope.currMorse = "";
+
+  $scope.morseToChar = function(morse) {
+    var index = $scope.morseDict.indexOf(morse);
+    return $scope.charDict[index];
+  }
+
+
+  // Button dot
+  $scope.onDot = function(){
+    $scope.currMorse += "1";
+  }
+
+  // Button dash
+  $scope.onDash = function(){
+    $scope.currMorse += "3"
+  }
+
+  $scope.onSpace = function(){
+    $scope.currMose = "000";
+    var char = morseToChar($scope.currMorse);
+    $scope.message += char;
+    $scope.currMorse="";
+  }
+
+  $scope.onAdd = function(){
+    $scope.currMorse += "0";
+    var char = morseToChar($scope.currMorse);
+    $scope.message += char;
+    $scope.currMorse="";
+  }
+
+
 });
