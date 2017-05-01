@@ -14,7 +14,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $timeout) {
+.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $cordovaVibration) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -22,9 +22,6 @@ angular.module('starter.controllers', ['ngCordova'])
   //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-
-  // Iterator i for plugin callbacks
-  // var i = 0;
 
   // All allowed characters placed in a dictionary
   $scope.charDict = ["a","b","c","d","e",
@@ -37,18 +34,18 @@ angular.module('starter.controllers', ['ngCordova'])
     "9"," "];
 
   // Morse code for each character in charDict in order
-  $scope.morseDict = ["13","311","3131","311","1",
-    "1131","331","1111","11","1333",
-    "313","1311","33","31","333",
-    "1331","3313","131","111","3",
-    "113","1113","133","3113","3133",
-    "3311","33333","13333","11333","11133",
-    "11113","11111","31111","33111","33311",
-    "33331", "0"];
+  $scope.morseDict = ["130","3110","31310","3110","10",
+    "11310","3310","11110","110","13330",
+    "3130","13110","330","310","3330",
+    "13310","33130","1310","1110","30",
+    "1130","11130","1330","31130","31330",
+    "33110","333330","133330","113330","111330",
+    "111130","111110","311110","331110","333110",
+    "333310", "000"];
 
   //$scope.message = $stateParams.message;
   /*-- Sample message to be removed after parameters issue --*/
-  $scope.message = "2 1"; //sample message\
+  $scope.message = "21"; //sample message\
 
   // Take a character, returns its morse code in strings of 1s and 3s
   $scope.stringToMorse= function(message) {
@@ -99,7 +96,7 @@ angular.module('starter.controllers', ['ngCordova'])
         });
       }else {
         p=p.then( function (){
-          wait(3500);
+          wait(1000);
           return $cordovaFlashlight.available();
         });
       }
@@ -107,38 +104,46 @@ angular.module('starter.controllers', ['ngCordova'])
     return p;
   };
 
-  $scope.flash500ms = function() {
-    return $cordovaFlashlight.switchOn().then(function () {
-      wait(500);
-      return $cordovaFlashlight.toggle();
-    });
-  };
-
   // Take a morse code in form of a 1s 3s string, utilize the speaker to play it
   $scope.playMorseSB= function(morse){
 
   };
 
+  // Take a morse code in form of a 1s 3s string, utilize cordova vibrate to play it
+  $scope.playMorseV = function(morse){
+    var p = $cordovaFlashlight.available();
+    for (var i = 0; i<morse.length; i++){
+      if (morse[i] == "1"){
+        p = p.then(function (){
+          console.log('on for 1');
+          $cordovaVibration.vibrate(500);
+          return $cordovaFlashlight.available();
+        }).then( function (){
+          wait(500);
+          return $cordovaFlashlight.available();
+        });
+      } else if (morse[i] == "3"){
+        p = p.then(function () {
+          console.log('on for 3');
+          $cordovaVibration.vibrate(1500);
+          return $cordovaFlashlight.available();
+        }).then( function (){
+          wait(500);
+          return $cordovaFlashlight.available();
+        });
+      } else {
+          p=p.then( function (){
+            wait(1000);
+            return $cordovaFlashlight.available();
+          });
+        }
+      }
+      return p;
+  };
+
   // Button function to play morse code with flashlight
   $scope.onFlashLight = function(){
-    /*
-    var p = $cordovaFlashlight.available();
-
-    for (var i = 0; i < $scope.message.length; i++){
-      console.log($scope.message[i]);
-      var morse = $scope.charToMorse($scope.message[i]);
-      console.log(morse);
-      p = p.then (function () {
-        return $scope.playMorseFL(morse, p);
-      });
-      //$scope.playMorseFL(morse, p);
-    }
-    p = p.then(function (){
-      $ionicLoading.show({ template: "flash done", noBackdrop: true, duration: 1000 });
-    });
-    */
     var morse = $scope.stringToMorse($scope.message);
-    //console.log(morse);
     $scope.playMorseFL(morse).then(function (){
       $ionicLoading.show({ template: "flash done", noBackdrop: true, duration: 1000 });
     });
@@ -146,63 +151,41 @@ angular.module('starter.controllers', ['ngCordova'])
 
   // Button function to play morse code with speaker
   $scope.onSoundBeep = function(){
-
-    var p = $cordovaFlashlight.available();
-    p = p.then( function() {
-      wait(1000);
-      return $cordovaFlashlight.available();
-    });
-    p = p.then( function() {
-      return $cordovaFlashlight.switchOn();
-    });
-    p = p.then( function() {
-      wait(1000);
-      return $cordovaFlashlight.available();
-    });
-    p = p.then( function() {
-      return $cordovaFlashlight.switchOff();
-    });
-    p = p.then( function() {
-      wait(1000);
-      return $cordovaFlashlight.available();
-    });
-    p = p.then( function() {
-      return $cordovaFlashlight.switchOn();
-    });
-    p = p.then( function() {
-      wait(1000);
-      return $cordovaFlashlight.available();
-    });
-    p = p.then( function() {
-      return $cordovaFlashlight.switchOff();
-    });
-    /*
-    for (var i = 0; i < 4; i++) {
-      p = p.then(function () {
-        wait(500);
-        return $cordovaFlashlight.toggle();
-      }).then(function() {
-        wait(1000);
-        return $cordovaFlashlight.toggle();
-      });
-    }
-    p.then(function() {
-      wait(500);
-      $cordovaFlashlight.switchOff();
-    })*/
+    var morse = $scope.stringToMorse($scope.message);
+    $scope.playMorseSB(morse).then(function (){
+      $ionicLoading.show({ template: "beep done", noBackdrop: true, duration: 1000 });
+    })
   };
 
+  // Button function to play morse code with vibrate
+  $scope.onVibrate = function(){
+    var morse = $scope.stringToMorse($scope.message);
+    $scope.playMorseV(morse).then( function () {
+      $ionicLoading.show({ template: "vibrate done", noBackdrop: true, duration: 1000 });
+    })
+  }
+
+
+  // Test button function to turn on vibrate
+  $scope.vibrate1 = function(){
+    $cordovaVibration.navigator.vibrate(500);
+  }
+  $scope.vibrate2 = function(){
+    $cordovaVibration.navigator.vibrate(1500);
+  }
+
+  /*
   // Test button function to turn on flashlight
   $scope.turnOn = function () {
     $cordovaFlashlight.switchOn();
     $ionicLoading.show({ template: 'On!', noBackdrop: true, duration: 1000 });
   };
-
   // Test button function to turn off flashlight
   $scope.turnOff = function() {
     $cordovaFlashlight.switchOff();
     $ionicLoading.show({ template: 'Off!', noBackdrop: true, duration: 1000 });
   };
+  */
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
