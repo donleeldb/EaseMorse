@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova','app.directives'])
 
   .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -70,7 +70,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
           'tab-playCode': {
             templateUrl: 'templates/tab-playCode.html',
             controller: 'playCodeCtrl',
-
           }
         }
       })

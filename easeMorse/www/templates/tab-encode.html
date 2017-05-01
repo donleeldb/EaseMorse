@@ -10,5 +10,12 @@
       <br>
     </div>
     <button class="button button-full button-positive animated bounceInUp" ng-click="onEncode()">Submit</button>
+
+    <button class="button button-full button-positive animated bounceInUp"
+            ng-speech-recognition-start ng-speech-recognition-end="speech.displayTranscript()">
+      Press & Talk
+    </button>
+
+
   </ion-content>
 </ion-view>
