@@ -1,7 +1,6 @@
 <ion-view view-title="Encode" hide-nav-bar="true">
   <ion-content class="background-all" ng-controller="encodeCtrl">
-
-    <div class="padding animated bounceInLeft">
+     <div class="padding animated bounceInLeft" style="margin-top:50px">
       <label class="item item-input">
 
         <input type="text" name="message" id="message-textarea"
@@ -9,14 +8,21 @@
       </label>
       <br>
     </div>
-    <button class="button button-full button-positive animated bounceInUp" ng-click="onEncode()">Submit</button>
 
-    <button class="button button-block button-royal" ng-speech-recognition-start="" ng-speech-recognition-end="displayTranscript()">
-      Press & Talk
-    </button>
-    <div class="item item-text-wrap">
-      <p ng-model="transcript">{{transcript}}</p>
+    <div class="card animated bounceInRight">
+      <div class="item item-divider background-grey positive">
+        Try using our voice recognition!
+      </div>
+      <div class="item item-text-wrap" >
+        <p class="padding" ng-model="transcript">{{transcript}}</p>
+      </div>
+        <a class="item item-icon-left positive background-grey" ng-speech-recognition-start="" ng-speech-recognition-end="displayTranscript()">
+          <i class="icon ion-mic-a"></i>
+          Press & Talk, Then click again
+        </a>
     </div>
 
+    <button class="button button-full button-positive animated bounceInUp" style="margin-top:50px" ng-click="onEncode()">Submit</button>
+    <center><p class="skip" style="margin-top:30px">Notice: if there are messages in both white boxes, <br>hitting the submit button would send the combination of them.</p></center>
   </ion-content>
 </ion-view>

@@ -1,7 +1,9 @@
 <ion-view view-title="Play Code" hide-nav-bar="true">
   <ion-content class="padding background-alternative" ng-controller="playCodeCtrl">
-
-    <div class="background-div animated bounceInDown">
+    <ion-refresher pulling-text="Pull To Refresh" on-refresh="onClear()"
+                   refreshing-text="Clearing ..." refreshing-icon="ion-loading-b"
+    ></ion-refresher>
+    <div class="background-div animated bounceInDown" style="margin-top:20px">
       <h2 class="positive putmiddle"> <strong> {{message}}</strong> </h2>
       <h4 class="white"> to be encrypted</h4>
       <!--
@@ -15,8 +17,6 @@
       <button class="button button-half" ng-click="turnOn()">Light On</button>
       <button class="button button-half" ng-click="turnOff()">Light Off</button>
       -->
-<<<<<<< HEAD
-=======
     </div>
     <div class="list card animated bounceInLeft">
       <div class="item item-avatar background-grey">
@@ -61,7 +61,7 @@
 
     </div>
 
-
+<!--
     <div class="list card animated bounceInRight">
 
       <div class="item item-avatar background-grey">
@@ -77,7 +77,6 @@
 
     </div>
 
-
     <div class="list card animated bounceInLeft">
 
       <div class="item item-avatar background-grey">
@@ -92,7 +91,7 @@
       </a>
 
     </div>
-
+-->
 
   </ion-content>
 </ion-view>

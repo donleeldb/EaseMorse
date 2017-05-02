@@ -68,7 +68,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $cordovaVibration) {
+.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $cordovaVibration, $timeout) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -230,6 +230,14 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.vibrate2 = function(){
     $cordovaVibration.vibrate(1500);
   }
+  $scope.onClear = function() {
+    $scope.message = "";
+    console.log('Refreshing');
+    $timeout(function() {
+      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$broadcast('scroll.refreshComplete');
+    }, 1250);
+  };
 
   /*
   // Test button function to turn on flashlight
@@ -247,7 +255,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 
 
-.controller('decodeCtrl', function($scope) {
+.controller('decodeCtrl', function($scope, $timeout) {
   $scope.settings = {
     enableFriends: true
   };
@@ -285,7 +293,7 @@ angular.module('starter.controllers', ['ngCordova'])
   // Button dot
   $scope.onDot = function(){
     $scope.currMorse += "1";
-    $scope.currMorseDashDot += ".";
+    $scope.currMorseDashDot += "•";
   }
 
   // Button dash
@@ -296,19 +304,41 @@ angular.module('starter.controllers', ['ngCordova'])
 
   $scope.onSpace = function(){
     $scope.currMose = "000";
-    var char = morseToChar($scope.currMorse);
+    var char = $scope.morseToChar($scope.currMorse);
     $scope.message += char;
     $scope.currMorse="";
   }
 
   $scope.onAdd = function(){
-    $scope.currMorse += "0";
-    var char = $scope.morseToChar($scope.currMorse);
-    console.log(char);
-    $scope.message += char;
-    $scope.currMorse="";
-    $scope.currMorseDashDot="";
+    if($scope.currMorse == "")
+    {
+      $ionicPopup.alert({
+        title: 'Introduction',
+        template: 'Hello! Our EaseMorse app offers a simple way to convert text into morse code, flashlights and beeps. Thanks for using!',
+        cssClass: 'animated shake'
+      });
+    }
+    else {
+      $scope.currMorse += "0";
+      var char = $scope.morseToChar($scope.currMorse);
+      console.log(char);
+      $scope.message += char;
+      $scope.currMorse = "";
+      $scope.currMorseDashDot = "";
+    }
   }
+
+  $scope.onClear = function() {
+    $scope.message = "";
+    $scope.currMorseDashDot = "";
+    $scope.currMorse = "";
+    console.log('Refreshing');
+    $timeout(function() {
+      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$broadcast('scroll.refreshComplete');
+    }, 1250);
+  };
+
 
 
 });
