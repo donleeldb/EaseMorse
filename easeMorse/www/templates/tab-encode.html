@@ -1,4 +1,4 @@
-<ion-view view-title="Encode">
+<ion-view view-title="Encode" hide-nav-bar="true">
   <ion-content class="background-all" ng-controller="encodeCtrl">
 
     <div class="padding animated bounceInLeft">
@@ -11,13 +11,11 @@
     </div>
     <button class="button button-full button-positive animated bounceInUp" ng-click="onEncode()">Submit</button>
 
-    <button class="button button-full button-positive animated bounceInUp"
-            ng-speech-recognition-start ng-speech-recognition-end="speech.displayTranscript()">
+    <button class="button button-block button-royal" ng-speech-recognition-start="" ng-speech-recognition-end="displayTranscript()">
       Press & Talk
     </button>
-
-    <div class="padding animated bounceInLeft">
-      <p ng-model="speech.transcript"> </p>
+    <div class="item item-text-wrap">
+      <p ng-model="transcript">{{transcript}}</p>
     </div>
 
   </ion-content>
