@@ -77,7 +77,7 @@ angular.module('starter.controllers', ['ngCordova'])
   };
 })
 
-.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $cordovaVibration, $cordovaMedia) {
+.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $cordovaVibration, $cordovaMedia, $timeout) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -288,7 +288,16 @@ angular.module('starter.controllers', ['ngCordova'])
     })
   };
 
-  // Test button function to play media
+  $scope.onClear = function(){
+    $scope.message = "";
+    $timeout(function() {
+      $scope.$broadcast('scroll.refreshComplete');
+      $scope.$broadcast('scroll.refreshComplete');
+    }, 1250);
+  };
+
+  /*
+   // Test button function to play media
   $scope.vibrate1 = function(){
     beepMediaDot.play().then( function() {
       wait(250);
@@ -313,8 +322,6 @@ angular.module('starter.controllers', ['ngCordova'])
     beepMediaDash.stop();
   }
 
-
-  /*
   // Test button function to turn on vibrate
   $scope.vibrate1 = function(){
     $cordovaVibration.vibrate(500);
@@ -414,7 +421,9 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.currMorse += "0";
       var char = $scope.morseToChar($scope.currMorse);
       console.log(char);
-      $scope.message += char;
+      if (char != undefined){
+        $scope.message += char;
+      }
       $scope.currMorse = "";
       $scope.currMorseDashDot = "";
     }
