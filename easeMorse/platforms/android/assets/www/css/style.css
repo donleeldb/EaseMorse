@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'Jura';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/jura/jura-v7-latin-regular.eot");
+    /* IE9 Compat Modes */
+    src: local("Jura Regular"), local("Jura-Regular"), url("../fonts/jura/jura-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/jura/jura-v7-latin-regular.woff2") format("woff2"), url("../fonts/jura/jura-v7-latin-regular.woff") format("woff"), url("../fonts/jura/jura-v7-latin-regular.ttf") format("truetype"), url("../fonts/jura/jura-v7-latin-regular.svg#Jura") format("svg");
+    /* Legacy iOS */ }
+#rectangle{
+  display: inline-block;
+  float:left;
+  width: 200px;
+  height: 60px;
+  border: solid 1px #555;
+  background-color: #fcd736;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+}
+
+#circle {
+  float:left;
+  background: #fcd736;
+  height: 85px;
+  width: 85px;
+  border-radius: 50px;
+  margin: 20px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+}
+.popoverView {
+  background-color: #4E5E6E !important; }
+.popoverView .scroll {
+  height: 100%; }
+.popoverView .scroll .slider {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  text-align: center; }
+.popoverView .scroll .slider .slider-slide img {
+  max-height: 100%;
+  max-width: 100%; }
+
+.grey{
+  color: #424242;
+}
+.putmiddle{
+  padding-top: 80px;
+}
+.background-div{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  line-height: 200px;
+  height: 200px;
+  background: url('../img/background.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.background-div2{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  line-height: 150px;
+  height: 150px;
+  background: url('../img/background.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.background-div3{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  line-height: 150px;
+  height: 150px;
+  background: url('../img/background.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.white{
+  color: #ffffff;
+}
+.background-grey{
+  background-color: #424242;
+}
+.background-alternative{
+  background-color: #202020;
+}
+.background-all{
+  background: url('../img/background.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.background-intro1{
+  background: url('../img/intro1.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.background-intro2{
+  background: url('../img/intro2.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.background-intro3{
+  background: url('../img/intro3.jpg') no-repeat fixed center;
+  background-size: contain;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+}
+.yellow {
+  color: #fcd736;
+}
+.skip{
+  color: #ffffff;
+  text-decoration: underline;
+}
+.popup-buttons.button {
+  background-color: #fcd736;
+}
+
+.welcomeView h1, .welcomeView button {
+    font-family: 'Jura'; }
+
+.welcomeView h1 {
+    font-size: 4em;
+    color: white; }
+
+.welcomeView button {
+    font-size: 26px; }
+
+.welcomeView .scroll-content {
+    background: linear-gradient(145deg, #6C6C6C, #95A2AB, #97A2B7, #d3c69f, #002F57, #000000);
+    background-size: 800% 800%;
+    -webkit-animation: background 26s ease infinite;
+    animation: background 26s ease infinite; }
+.welcomeView .scroll-content .scroll {
+    height: 100%; }
+.welcomeView .scroll-content .scroll .row-center {
+    height: 100%; }
+
+@-webkit-keyframes background {
+    0% {
+        background-position: 1% 0%; }
+    50% {
+        background-position: 99% 100%; }
+    100% {
+        background-position: 1% 0%; } }
+
+@keyframes background {
+    0% {
+        background-position: 1% 0%; }
+    50% {
+        background-position: 99% 100%; }
+    100% {
+        background-position: 1% 0%; } }
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+    display: none !important; }
+
+.itemView .animated {
+    -webkit-animation-delay: 0.2s;
+    animation-delay: 0.2s; }
