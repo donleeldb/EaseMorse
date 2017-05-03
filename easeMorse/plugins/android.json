@@ -1,0 +1,54 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-flashlight": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "XWALK_VERSION": "23+",
+            "XWALK_LITEVERSION": "xwalk_core_library_canary:17+",
+            "XWALK_COMMANDLINE": "--disable-pull-to-refresh-effect",
+            "XWALK_MODE": "embedded",
+            "XWALK_MULTIPLEAPK": "true",
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.ionicframework.easemorse793727"
+        }
+    }
+}
