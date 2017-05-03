@@ -34,6 +34,7 @@ angular.module('starter.controllers', ['ngCordova'])
 
 .controller('encodeCtrl', function($scope, $state, $ionicViewSwitcher,$ionicLoading, $rootScope) {
   $scope.message = "";
+  $scope.encodeMessage = "";
 //////////////////////////////////////////////////
   var vm = this;
 
@@ -54,21 +55,29 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.$digest();
     }
   }
-  ///////////////////////////////////
+
+
+
+  // Button to transfer to playCode state and passes the message
   $scope.onEncode = function(){
 
     $ionicLoading.show({ template: $scope.message, noBackdrop: true, duration: 1000 });
 
+    if ($rootScope.transcript != undefined)
+      $scope.encodeMessage = $rootScope.transcript + $scope.message;
+    else
+      $scope.encodeMessage = $scope.message;
+
     $ionicViewSwitcher.nextDirection('forward');
     $state.go("tab.playCode", {
       ///'message': $scope.message
-      'message': $rootScope.transcript + $scope.message
+      'message': $scope.encodeMessage
     });
     $rootScope.transcript = "";
   };
 })
 
-.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $cordovaVibration, $timeout) {
+.controller('playCodeCtrl', function($scope, $state, $stateParams, $ionicLoading, $cordovaFlashlight, $cordovaVibration, $cordovaMedia) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -97,12 +106,18 @@ angular.module('starter.controllers', ['ngCordova'])
     "111130","111110","311110","331110","333110",
     "333310", "000"];
 
+  // Aquire to-be-encoded message from stateParams,
+  // If undefined, set to empty string
   $scope.message = "";
+  if ($stateParams.message != "undefined")
   $scope.message = $stateParams.message;
-  console.log($stateParams);
 
-  /*-- Sample message to be removed after parameters issue --*/
-  //$scope.message = "21"; //sample message\
+  // Set up sound beep files
+  var beepSrcDot = "/audio/censor-beep-01.mp3";
+  var beepSrcDash = "/audio/censor-beep-3.mp3";
+  var beepMediaDot = $cordovaMedia.newMedia(beepSrcDot);
+  var beepMediaDash = $cordovaMedia.newMedia(beepSrcDash);
+
 
   // Take a character, returns its morse code in strings of 1s and 3s
   $scope.stringToMorse= function(message) {
@@ -163,12 +178,41 @@ angular.module('starter.controllers', ['ngCordova'])
 
   // Take a morse code in form of a 1s 3s string, utilize the speaker to play it
   $scope.playMorseSB= function(morse){
-
+    //if (morse[0] == "1")
+    //  var p = beepMediaDot.play();
+    //if (morse[0] == "3")
+    //  var p = beepMediaDash.play();
+    p = $cordovaFlashlight.available();
+    for (var i = 0; i<morse.length; i++ ){
+      if (morse[i]=="1"){
+        p = p.then( function() {
+          return beepMediaDot.play();
+        }).then( function() {
+          wait(250);
+          return $cordovaFlashlight.available();
+        });
+      } else if (morse[i] == "3"){
+        p = p.then( function() {
+          return beepMediaDash.play();
+        }).then( function() {
+          wait(250);
+          return $cordovaFlashlight.available();
+        });
+      } else {
+        p = p.then(function () {
+          wait(500);
+          return $cordovaFlashlight.available();
+        });
+      }
+    }
+    return p;
   };
 
   // Take a morse code in form of a 1s 3s string, utilize cordova vibrate to play it
   $scope.playMorseV = function(morse){
+    /*
     var p = $cordovaFlashlight.available();
+
     for (var i = 0; i<morse.length; i++){
       if (morse[i] == "1"){
         p = p.then(function (){
@@ -196,6 +240,28 @@ angular.module('starter.controllers', ['ngCordova'])
         }
       }
       return p;
+    */
+    var time = [];
+    var count = 0;
+    for (var i = 0; i<morse.length; i++){
+      if (morse[i] == "1"){
+        time[count] = 500;
+        count++;
+        time[count] = 500;
+        count++;
+      }else if (morse[i] == "3"){
+        time[count] = 1500;
+        count++;
+        time[count] = 500;
+        count++;
+      }else {
+        time[count] = 0;
+        count++;
+        time[count] = 1000;
+        count++;
+      }
+    }
+    $cordovaVibration.vibrate(time);
   };
 
   // Button function to play morse code with flashlight
@@ -220,9 +286,35 @@ angular.module('starter.controllers', ['ngCordova'])
     $scope.playMorseV(morse).then( function () {
       $ionicLoading.show({ template: "vibrate done", noBackdrop: true, duration: 1000 });
     })
+  };
+
+  // Test button function to play media
+  $scope.vibrate1 = function(){
+    beepMediaDot.play().then( function() {
+      wait(250);
+      //beepMediaDot.stop();
+      return beepMediaDash.play();
+    }).then (function() {
+      wait(250);
+      //beepMediaDot.stop();
+      return beepMediaDot.play();
+    });
+  };
+
+  $scope.vibrate2 = function(){
+    beepMediaDash.play();
+    wait(250);
+    beepMediaDash.stop();
+    beepMediaDash.play();
+    wait(250);
+    beepMediaDash.stop();
+    beepMediaDash.play();
+    wait(250);
+    beepMediaDash.stop();
   }
 
 
+  /*
   // Test button function to turn on vibrate
   $scope.vibrate1 = function(){
     $cordovaVibration.vibrate(500);
@@ -239,7 +331,7 @@ angular.module('starter.controllers', ['ngCordova'])
     }, 1250);
   };
 
-  /*
+
   // Test button function to turn on flashlight
   $scope.turnOn = function () {
     $cordovaFlashlight.switchOn();
@@ -287,27 +379,27 @@ angular.module('starter.controllers', ['ngCordova'])
   $scope.morseToChar = function(morse) {
     var index = $scope.morseDict.indexOf(morse);
     return $scope.charDict[index];
-  }
+  };
 
 
   // Button dot
   $scope.onDot = function(){
     $scope.currMorse += "1";
     $scope.currMorseDashDot += "•";
-  }
+  };
 
   // Button dash
   $scope.onDash = function(){
     $scope.currMorse += "3";
     $scope.currMorseDashDot += "-";
-  }
+  };
 
   $scope.onSpace = function(){
     $scope.currMorse = "000";
     var char = $scope.morseToChar($scope.currMorse);
     $scope.message += char;
     $scope.currMorse="";
-  }
+  };
 
   $scope.onAdd = function(){
     if($scope.currMorse == "")
@@ -326,7 +418,7 @@ angular.module('starter.controllers', ['ngCordova'])
       $scope.currMorse = "";
       $scope.currMorseDashDot = "";
     }
-  }
+  };
 
   $scope.onClear = function() {
     $scope.message = "";
