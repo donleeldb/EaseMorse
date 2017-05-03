@@ -6,6 +6,30 @@
     /* IE9 Compat Modes */
     src: local("Jura Regular"), local("Jura-Regular"), url("../fonts/jura/jura-v7-latin-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/jura/jura-v7-latin-regular.woff2") format("woff2"), url("../fonts/jura/jura-v7-latin-regular.woff") format("woff"), url("../fonts/jura/jura-v7-latin-regular.ttf") format("truetype"), url("../fonts/jura/jura-v7-latin-regular.svg#Jura") format("svg");
     /* Legacy iOS */ }
+#rectangle{
+  display: inline-block;
+  float:left;
+  width: 200px;
+  height: 60px;
+  border: solid 1px #555;
+  background-color: #fcd736;
+  box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+  -o-box-shadow: 0 0 10px 5px rgba(0,0,0,0.6);
+}
+
+#circle {
+  float:left;
+  background: #fcd736;
+  height: 85px;
+  width: 85px;
+  border-radius: 50px;
+  margin: 20px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+}
 .popoverView {
   background-color: #4E5E6E !important; }
 .popoverView .scroll {
@@ -40,8 +64,8 @@
 .background-div2{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
-  line-height: 200px;
-  height: 200px;
+  line-height: 150px;
+  height: 150px;
   background: url('../img/background.jpg') no-repeat fixed center;
   background-size: contain;
   -webkit-background-size: cover;
@@ -50,8 +74,8 @@
 .background-div3{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
-  line-height: 200px;
-  height: 200px;
+  line-height: 150px;
+  height: 150px;
   background: url('../img/background.jpg') no-repeat fixed center;
   background-size: contain;
   -webkit-background-size: cover;

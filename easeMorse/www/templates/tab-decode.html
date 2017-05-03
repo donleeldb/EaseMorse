@@ -3,17 +3,17 @@
     <ion-refresher pulling-text="Pull To Refresh" on-refresh="onClear()"
                    refreshing-text="Clearing ..." refreshing-icon="ion-loading-b"
     ></ion-refresher>
-    <div class="background-div2 animated bounceInDown" style="margin-top:20px">
+    <div class="background-div2 animated bounceInRight" style="margin-top:20px">
       <h2 class="white putmiddle"> <strong>Decoded message</strong> </h2>
       <h3 class="positive"> {{message}}</h3>
     </div>
 
 
-    <div class="background-div3 animated bounceInDown">
+    <div class="background-div3 animated bounceInLeft" style="margin-top:7px">
       <h2 class="positive putmiddle"> {{currMorseDashDot}}</h2>
     </div>
 
-
+<!--
     <div class="list card animated bounceInRight">
       <div class="item item-avatar background-grey">
         <img src="img/face4.jpg">
@@ -61,7 +61,15 @@
         Add a space
       </a>
     </div>
-
+    -->
+    <div id="circle" class="animated rubberBand" ng-click="onDot()"></div>
+    <div id="rectangle" class="animated swing" style="margin-top:33px" ng-click="onDash()"></div>
+    <button style="margin-top:50px"class="button button-full button-stable animated bounceInRight" ng-click="onSpace()">
+      Space
+    </button>
+    <button style="margin-top:25px"class="button button-full button-positive animated bounceInLeft" ng-click="onAdd()">
+      Add
+    </button>
     <!--
     <div class="list card animated bounceInRight">
       <div class="item item-avatar background-grey">

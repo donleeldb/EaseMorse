@@ -303,7 +303,7 @@ angular.module('starter.controllers', ['ngCordova'])
   }
 
   $scope.onSpace = function(){
-    $scope.currMose = "000";
+    $scope.currMorse = "000";
     var char = $scope.morseToChar($scope.currMorse);
     $scope.message += char;
     $scope.currMorse="";
